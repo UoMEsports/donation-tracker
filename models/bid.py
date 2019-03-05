@@ -138,7 +138,7 @@ class Bid(mptt.models.MPTTModel):
     if self.speedrun:
       result = [self.speedrun.name_with_category(), ' : '] + result
     if addMoney:
-      result += [' $', '%0.2f' % self.total]
+      result += [' £', '%0.2f' % self.total]
       if self.goal:
         result += [' / ', '%0.2f' % self.goal]
     return ''.join(result)

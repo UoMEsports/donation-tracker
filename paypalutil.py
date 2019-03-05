@@ -127,7 +127,7 @@ def initialize_paypal_donation(ipnObj):
     donation.modcomment += "\n*Tampered donation amount from " + str(donation.amount) + " to " + str(ipnObj.mc_gross) + ", removed all bids*"
     donation.amount = ipnObj.mc_gross
     donation.bids.clear()
-    viewutil.tracker_log('paypal', 'Tampered amount detected in donation {0} (${1} -> ${2})'.format(donation.id, donation.amount, ipnObj.mc_gross), event=donation.event)
+    viewutil.tracker_log('paypal', 'Tampered amount detected in donation {0} (£{1} -> £{2})'.format(donation.id, donation.amount, ipnObj.mc_gross), event=donation.event)
 
   paymentStatus = ipnObj.payment_status.lower()
 

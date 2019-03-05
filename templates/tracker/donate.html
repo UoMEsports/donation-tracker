@@ -67,9 +67,9 @@
         var donationBidsFilter = new MegaFilter(BIDS, ["suggested", 'custom'], ['name', 'description', 'runname'], bidLabel, bidDetailText);
 
         function prizeLabel(prize) {
-            var result = prize['name'] + ' $' + prize['minimumbid']; // etc...
+            var result = prize['name'] + ' £' + prize['minimumbid']; // etc...
             if (prize['maximumbid'] !== null && prize['maximumbid'] != prize['minimumbid']) {
-                result += ' - $' + prize['maximumbid'];
+                result += ' - £' + prize['maximumbid'];
             }
             if (prize['sumdonations']) {
                 result += ' (sum)';
@@ -214,7 +214,7 @@
                         }
                         else if (!prize['sumdonations'] && $(amountInput).val() < prize['minimumbid']) {
                             enoughPrizeMoney = false;
-                            window.alert("Must donate at least $" + String(prize['minimumbid']) + " to be eligible for " + prize['name']);
+                            window.alert("Must donate at least £" + String(prize['minimumbid']) + " to be eligible for " + prize['name']);
                             return false;
                         }
                     }
@@ -424,9 +424,9 @@
                         received by us.</p>
 
                     <div id="info">
-                        Total Allocated: $<span id="totalallocated"></span> / $<span id="donationtotal"></span>
+                        Total Allocated: £<span id="totalallocated"></span> / £<span id="donationtotal"></span>
                         <br/>
-                        Remaining: $<span id="totalremaining"></span>
+                        Remaining: £<span id="totalremaining"></span>
                     </div>
 
                     {% for form in bidsform %}
@@ -462,10 +462,10 @@
                         the prize.</p>
 
                     <div id="info">
-                        Total Allocated: $<span id="totalprizeallocated"></span> / $<span
+                        Total Allocated: £<span id="totalprizeallocated"></span> / £<span
                             id="prizedonationtotal"></span>
                         <br/>
-                        Remaining: $<span id="totalprizeremaining"></span>
+                        Remaining: £<span id="totalprizeremaining"></span>
                     </div>
 
                     {% for form in prizesform %}

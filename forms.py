@@ -110,7 +110,7 @@ class DonationEntryForm(forms.Form):
         super(DonationEntryForm, self).__init__(*args, **kwargs)
         minDonationAmount = event.minimumdonation if event != None else Decimal(
             "1.00")
-        self.fields['amount'] = forms.DecimalField(decimal_places=2, min_value=minDonationAmount, max_value=Decimal("100000"),  label="Donation Amount (min ${0})".format(
+        self.fields['amount'] = forms.DecimalField(decimal_places=2, min_value=minDonationAmount, max_value=Decimal("100000"),  label="Donation Amount (min £{0})".format(
             minDonationAmount), widget=tracker.widgets.NumberInput(attrs={'id': 'iDonationAmount', 'min': str(minDonationAmount), 'step': '0.01'}), required=True)
         self.fields['comment'] = forms.CharField(
             widget=forms.Textarea, required=False)
@@ -159,7 +159,7 @@ class DonationBidFormV2(forms.Form):
                     self.fields['bid_amt_{}'.format(bid.id)] = forms.DecimalField(
                         decimal_places=2, max_digits=20, required=False, min_value=0,
                         widget=tracker.widgets.NumberInput(attrs={'class': 'form-control bid-amount', 'step': '0.01',
-                                                                  'placeholder': '$', 'min': '0'}))
+                                                                  'placeholder': '£', 'min': '0'}))
 
                 # If this is a user-options bid war parent, add an extra field for new option value.
                 if bid.allowuseroptions:

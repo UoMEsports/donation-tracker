@@ -36,7 +36,7 @@
             let amount = get_amount();
             let bid_total = get_bid_total();
             let e = $(".bid-total");
-            e.text("$" + bid_total.toFixed(2) + "/$" + amount.toFixed(2));
+            e.text("£" + bid_total.toFixed(2) + "/£" + amount.toFixed(2));
             if (bid_total > amount) {
                 e.addClass("alert-danger");
             } else {
@@ -180,7 +180,7 @@
             <div class="panel panel-default bid-total-panel">
                 {% if hasBids %}
                     <button type="button" class="btn bid-total-button bid-total-button-opened"></button>
-                    <span class="bid-total">$0.00/$0.00</span>
+                    <span class="bid-total">£0.00/£0.00</span>
                 {% endif %}
             </div>
         </div>
