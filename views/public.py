@@ -39,7 +39,7 @@ def index(request,event=None):
     eventParams['event'] = event.id
   else:
     allEvents = Event.objects.all()
-    if allEvents.length == 1:
+    if len(allEvents) == 1:
       event = allEvents[0]
       eventParams['event'] = event.id
 
