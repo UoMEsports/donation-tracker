@@ -10,6 +10,10 @@ body {
     font-family: serenity, sans-serif;
 }
 
+a:hover, a:active, a:focus {
+    color: #FFD421;
+}
+
 .navbar-container {
     background-color: #222;
     border-color: #080808;
