@@ -1,15 +1,11 @@
-{% extends "base.html" %}
+{% extends "tracker/index.html" %}
 {% load staticfiles %}
 
 {% block title %}
     {{ event.name|title }} | Donation Cancelled
 {% endblock %}
 
-{% block head %}
-    <link rel="stylesheet" type="text/css" href="{% static "queueindex.css" %}" />
-{% endblock %}
-
 {% block content %}
-    The transaction has been cancelled.  No money had been transferred.
+    <h1>The transaction has been cancelled.  No money had been transferred.</h1>
 {% endblock %}
 
