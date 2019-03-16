@@ -35,11 +35,11 @@ def index(request,event=None):
   event = viewutil.get_event(event)
   eventParams = {}
 
-  if not event.id:
-    allEvents = Event.objects.all()
-    eventCount = len(allEvents)
-    if eventCount == 1:
-      event = allEvents[0]
+  allEvents = Event.objects.all()
+  eventCount = len(allEvents)
+
+  if not event.id and eventCount == 1:
+    event = allEvents[0]
 
   if event.id:
     eventParams['event'] = event.id
