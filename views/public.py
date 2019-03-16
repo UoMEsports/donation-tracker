@@ -35,11 +35,13 @@ def index(request,event=None):
   event = viewutil.get_event(event)
   eventParams = {}
 
+  allEvents = Event.objects.all()
+  eventCount = len(allEvents)
+
   if event.id:
     eventParams['event'] = event.id
   else:
-    allEvents = Event.objects.all()
-    if len(allEvents) == 1:
+    if eventCount == 1:
       event = allEvents[0]
       eventParams['event'] = event.id
 
@@ -55,7 +57,7 @@ def index(request,event=None):
   if 'json' in request.GET:
     return HttpResponse(json.dumps({'count':count,'agg':agg},ensure_ascii=False, cls=serializers.json.DjangoJSONEncoder),content_type='application/json;charset=utf-8')
 
-  return views_common.tracker_response(request, 'tracker/index.html', { 'agg' : agg, 'count' : count, 'event': event })
+  return views_common.tracker_response(request, 'tracker/index.html', { 'agg' : agg, 'count' : count, 'event': event, 'event_count': eventCount })
 
 def get_bid_children(bid, bids):
   return sorted((bid_info(child, bids) for child in bids if child.parent_id == bid.id), key=lambda child: -child['total'])
