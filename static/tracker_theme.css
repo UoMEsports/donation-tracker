@@ -98,17 +98,19 @@ th, td {
 }
 
 .container-custom {
-    max-width: 800px;
+    max-width: 1200px;
     margin: auto;
 }
 
 .button-container {
     width: 95%;
+    max-width: 800px;
     margin: auto;
 }
 
 .banner {
     width: 90%;
+    max-width: 750px;
     margin: 35px auto -30px auto;
     text-align: center;
     display: block;
