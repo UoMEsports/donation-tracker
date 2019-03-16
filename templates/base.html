@@ -49,28 +49,29 @@
 <body>
 
 {% block nav %}
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-custom">
-                <a class="nav-item" href="{% url 'tracker:index' event=event.short %}">{% trans "Home" %}</a>
-                <div class="spacer"></div>
-                <a class="nav-item" href="{% url 'tracker:prizeindex' event=event.short %}">{% trans "Prizes" %}</a>
-                <div class="spacer"></div>
-                <a class="nav-item" href="{% url 'tracker:bidindex' event=event.short %}">{% trans "Bids" %}</a>
-                <div class="spacer"></div>
-                <a class="nav-item" href="{% url 'tracker:donorindex' event=event.short %}">{% trans "Donors" %}</a>
-                <div class="spacer"></div>
-                <a class="nav-item" href="{% url 'tracker:donationindex' event=event.short %}">{% trans "Donations" %}</a>
+    <div class="navbar-container">
+        <div class="navbar-custom">
+            <div class="spacer"></div>
+            <a class="nav-item" href="{% url 'tracker:index' event=event.short %}">{% trans "Home" %}</a>
+            <div class="spacer"></div>
+            <a class="nav-item" href="{% url 'tracker:prizeindex' event=event.short %}">{% trans "Prizes" %}</a>
+            <div class="spacer"></div>
+            <a class="nav-item" href="{% url 'tracker:bidindex' event=event.short %}">{% trans "Bids" %}</a>
+            <div class="spacer"></div>
+            <a class="nav-item" href="{% url 'tracker:donorindex' event=event.short %}">{% trans "Donors" %}</a>
+            <div class="spacer"></div>
+            <a class="nav-item" href="{% url 'tracker:donationindex' event=event.short %}">{% trans "Donations" %}</a>
 
-                {% if user and user.is_authenticated %}
-                    <div class="spacer"></div>
-                    <a class="nav-item" href="{% url 'tracker:user_index' %}">{% trans "Self Service" %}</a>
-                    <div class="spacer"></div>
-                    <a class="nav-item" href="{% url 'tracker:logout' %}">{% trans "Log Out" %}</a>
-                {% endif %}
-            </div>
+            {% if user and user.is_authenticated %}
+                <div class="spacer"></div>
+                <a class="nav-item" href="{% url 'tracker:user_index' %}">{% trans "Self Service" %}</a>
+                <div class="spacer"></div>
+                <a class="nav-item" href="{% url 'tracker:logout' %}">{% trans "Log Out" %}</a>
+            {% endif %}
+
+            <div class="spacer"></div>
         </div>
-    </nav>
+    </div>
     <br /><br />
 {% endblock %}
 

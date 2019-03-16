@@ -10,16 +10,12 @@ body {
     font-family: serenity, sans-serif;
 }
 
-.nav {
-    font-family: azonix, sans-serif;
-}
-
-.navbar-nav li a {
-    color: #FFD421 !important;
-}
-
-.navbar-nav li a:hover {
-    color: white !important;
+.navbar-container {
+    background-color: #222;
+    border-color: #080808;
+    top: 0;
+    height: 70px;
+    border-width: 0 0 1px;
 }
 
 .navbar-custom {
@@ -28,10 +24,19 @@ body {
     flex-wrap: wrap;
     height: 50px;
     align-items: center;
+    margin-bottom: 0;
+
+    max-width: 800px;
+    margin: auto;
 }
 
-.navbar-item {
+.nav-item {
     font-size: 24px;
+    color: #FFD421 !important;
+}
+
+.nav-item:hover {
+    color: white !important;
 }
 
 .spacer {
