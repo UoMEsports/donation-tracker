@@ -22,6 +22,22 @@ body {
     color: white !important;
 }
 
+.navbar-custom {
+    font-family: azonix, sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    height: 50px;
+    align-items: center;
+}
+
+.navbar-item {
+    font-size: 24px;
+}
+
+.spacer {
+    flex: 1 0 15px;
+}
+
 .table-striped > tbody > tr:nth-of-type(odd) {
     background-color: #2e3338;
 }
