@@ -1,7 +1,17 @@
+@font-face {
+    font-family: 'Azonix';
+    src: url('static/res/azonix.woff') format('woff');
+    font-weight: normal;
+}
+
 body {
     background-color: #3A3A3C;
     color: white;
-    font-family: serenity, sans-serif !important;
+    font-family: serenity, sans-serif;
+}
+
+.nav {
+    font-family: azonix, sans-serif;
 }
 
 .navbar-nav li a {
@@ -43,6 +53,7 @@ th, td {
 
 .btn {
     font-weight: 600;
+    font-family: azonix, sans-serif;
 }
 
 .btn-success, .btn-primary {
@@ -51,7 +62,7 @@ th, td {
     border-color: #FFD421;
 }
 
-.btn-success:hover, .btn-primary:hover {
+.btn-success:hover, .btn-primary:hover, .btn-success:active, .btn-primary:active, .btn-success:focus, .btn-primary:focus {
     color: black;
     background-color: #FFD421;
     border-color: #FFD421;
