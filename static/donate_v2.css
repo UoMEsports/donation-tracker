@@ -26,7 +26,7 @@ a, a:hover, a:visited, a:link, a:active {
 
 .donate-container {
     background-color: #2e3338;
-    border: 5px solid #269abc;
+    border: 5px solid #FFD421;
     padding: 1em;
     margin-bottom: 2em;
 }
@@ -45,7 +45,7 @@ a, a:hover, a:visited, a:link, a:active {
 }
 
 .panel-default, .panel-heading, .panel-title, .panel-body, .list-group, .list-group-item {
-    border-color: #269abc !important;
+    border-color: #FFD421 !important;
 }
 
 @media screen and (min-width: 992px) {

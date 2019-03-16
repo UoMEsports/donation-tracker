@@ -4,7 +4,7 @@ body {
 }
 
 .navbar-nav li a {
-    color: #269abc !important;
+    color: #FFD421 !important;
 }
 
 .navbar-nav li a:hover {
@@ -37,5 +37,11 @@ th, td {
 }
 
 .text-gdq-black {
-    color: #269abc;
+    color: #FFD421;
+}
+
+.btn-info {
+    color: #fff;
+    background-color: #FFF100;
+    border-color: #FFD421;
 }
