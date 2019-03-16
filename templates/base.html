@@ -62,12 +62,12 @@
             <div class="spacer"></div>
             <a class="nav-item" href="{% url 'tracker:donationindex' event=event.short %}">{% trans "Donations" %}</a>
 
-            {% if user and user.is_authenticated %}
+            <!--{% if user and user.is_authenticated %}
                 <div class="spacer"></div>
                 <a class="nav-item" href="{% url 'tracker:user_index' %}">{% trans "Self Service" %}</a>
                 <div class="spacer"></div>
                 <a class="nav-item" href="{% url 'tracker:logout' %}">{% trans "Log Out" %}</a>
-            {% endif %}
+            {% endif %}-->
 
             <div class="spacer"></div>
         </div>
@@ -83,7 +83,7 @@
         <div class="container-fluid text-center" style="margin-bottom:30px;">
             <br />{% trans "This site is an updated version of the GDQ Tracker" %}
             <br />{% trans "Modified for PUWP by Dorkmaster Flek" %}
-            <br />{% trans "Updated for HiveAid by UoM Esports" %}
+            <br />{% trans "Updated for HiveAid by <a href="https://github.com/UoMEsports">UoM Esports</a>" %}
         </div>
     {% endif %}
 {% endblock %}
