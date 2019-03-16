@@ -1,5 +1,5 @@
 body {
-    background-color: #272b30;
+    background-color: #3A3A3C;
     color: white;
 }
 
@@ -40,8 +40,12 @@ th, td {
     color: #FFD421;
 }
 
-.btn-info {
-    color: #fff;
+.btn-success {
+    color: black;
     background-color: #FFF100;
     border-color: #FFD421;
+}
+
+.fa-inverse {
+    color: #3A3A3C;
 }
