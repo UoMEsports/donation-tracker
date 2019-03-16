@@ -1,7 +1,7 @@
 body {
     background-color: #3A3A3C;
     color: white;
-    font-family: serenity, sans-serif;
+    font-family: serenity, sans-serif !important;
 }
 
 .navbar-nav li a {
@@ -39,6 +39,10 @@ th, td {
 
 .text-gdq-black {
     color: #FFD421;
+}
+
+.btn {
+    font-weight: 600;
 }
 
 .btn-success, .btn-primary {
