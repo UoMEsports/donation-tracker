@@ -35,15 +35,14 @@ def index(request,event=None):
   event = viewutil.get_event(event)
   eventParams = {}
 
-  allEvents = Event.objects.all()
-  eventCount = len(allEvents)
+  if not event.id
+    allEvents = Event.objects.all()
+    eventCount = len(allEvents)
+    if eventCount == 1:
+      event = allEvents[0]
 
   if event.id:
     eventParams['event'] = event.id
-  else:
-    if eventCount == 1:
-      event = allEvents[0]
-      eventParams['event'] = event.id
 
   agg = filters.run_model_query('donation', eventParams).aggregate(amount=Sum('amount'), count=Count('amount'), max=Max('amount'), avg=Avg('amount'))
   agg['target'] = event.targetamount
@@ -85,6 +84,12 @@ def bid_info(bid, bids, speedrun=None, event=None):
 @cache_page(60)
 def bidindex(request, event=None):
   event = viewutil.get_event(event)
+
+  if not event.id
+    allEvents = Event.objects.all()
+    eventCount = len(allEvents)
+    if eventCount == 1:
+      event = allEvents[0]
 
   if not event.id:
     return HttpResponseRedirect(reverse('tracker:bidindex', args=(Event.objects.latest().short,)))
@@ -146,6 +151,13 @@ def bid(request, id):
 @cache_page(60)
 def donorindex(request,event=None):
   event = viewutil.get_event(event)
+
+  if not event.id
+    allEvents = Event.objects.all()
+    eventCount = len(allEvents)
+    if eventCount == 1:
+      event = allEvents[0]
+
   orderdict = {
     'total' : ('donation_total',    ),
     'max'   : ('donation_max',      ),
@@ -185,6 +197,13 @@ def donorindex(request,event=None):
 def donor(request, id, event=None):
   try:
     event = viewutil.get_event(event)
+
+    if not event.id
+      allEvents = Event.objects.all()
+      eventCount = len(allEvents)
+      if eventCount == 1:
+        event = allEvents[0]
+
     cache = DonorCache.objects.get(donor=id,event=event.id if event.id else None)
     if cache.visibility == 'ANON':
       return views_common.tracker_response(request, template='tracker/badobject.html', status=404)
@@ -203,6 +222,13 @@ def donor(request, id, event=None):
 @cache_page(60)
 def donationindex(request,event=None):
   event = viewutil.get_event(event)
+
+  if not event.id
+    allEvents = Event.objects.all()
+    eventCount = len(allEvents)
+    if eventCount == 1:
+      event = allEvents[0]
+
   orderdict = {
     'amount' : ('amount', ),
     'time'   : ('timereceived', ),
