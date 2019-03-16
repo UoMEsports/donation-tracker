@@ -141,7 +141,7 @@ class Event(models.Model):
                                                      verbose_name='Pending Donation Email Template', default=None,
                                                      null=True, blank=True, on_delete=models.PROTECT,
                                                      related_name='event_pending_donation_templates')
-    donationemailsender = models.EmailField(max_length=128, null=True, blank=True, verbose_name='Donation Email Sender')
+    donationemailsender = models.CharField(max_length=128, null=True, blank=True, verbose_name='Donation Email Sender')
     scheduleid = models.CharField(max_length=128, unique=True, null=True, blank=True,
                                   verbose_name='Schedule ID (LEGACY)', editable=False)
     datetime = models.DateTimeField()
