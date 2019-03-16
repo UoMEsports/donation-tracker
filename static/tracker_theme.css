@@ -77,13 +77,13 @@ th, td {
     font-family: azonix, sans-serif;
 }
 
-.btn-success, .btn-primary {
+.btn-hiveaid {
     color: black;
     background-color: #FFF100;
     border-color: #FFD421;
 }
 
-.btn-success:hover, .btn-primary:hover, .btn-success:active, .btn-primary:active, .btn-success:focus, .btn-primary:focus {
+.btn-hiveaid:hover, .btn-hiveaid:active, .btn-hiveaid:focus {
     color: black;
     background-color: #FFD421;
     border-color: #FFD421;

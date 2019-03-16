@@ -34,7 +34,7 @@
         {% endif %}
         <br />
         {% if event.id != None and not event.locked %}
-            <p class="center-block"><a class="btn btn-lg btn-success btn-block" href="{% url 'tracker:donate' event.short %}">Donate</a></p>
+            <p class="center-block"><a class="btn btn-lg btn-hiveaid btn-block" href="{% url 'tracker:donate' event.short %}">Donate</a></p>
         {% endif %}
     </div>
 {% endblock %}
