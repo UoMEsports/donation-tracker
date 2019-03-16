@@ -1,1 +1,11 @@
-Server done blowed up
+{% extends "tracker/index.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    {{ event.name|title }} | Server Error
+{% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center;">The server couldn't handle your request.</h1>
+{% endblock %}
+

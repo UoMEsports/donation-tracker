@@ -1,1 +1,11 @@
-Bad page
+{% extends "tracker/index.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    {{ event.name|title }} | 404
+{% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center;">404 - Page not found</h1>
+{% endblock %}
+
