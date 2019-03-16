@@ -35,7 +35,7 @@ def index(request,event=None):
   event = viewutil.get_event(event)
   eventParams = {}
 
-  if not event.id
+  if not event.id:
     allEvents = Event.objects.all()
     eventCount = len(allEvents)
     if eventCount == 1:
@@ -85,7 +85,7 @@ def bid_info(bid, bids, speedrun=None, event=None):
 def bidindex(request, event=None):
   event = viewutil.get_event(event)
 
-  if not event.id
+  if not event.id:
     allEvents = Event.objects.all()
     eventCount = len(allEvents)
     if eventCount == 1:
@@ -152,7 +152,7 @@ def bid(request, id):
 def donorindex(request,event=None):
   event = viewutil.get_event(event)
 
-  if not event.id
+  if not event.id:
     allEvents = Event.objects.all()
     eventCount = len(allEvents)
     if eventCount == 1:
@@ -198,7 +198,7 @@ def donor(request, id, event=None):
   try:
     event = viewutil.get_event(event)
 
-    if not event.id
+    if not event.id:
       allEvents = Event.objects.all()
       eventCount = len(allEvents)
       if eventCount == 1:
@@ -223,7 +223,7 @@ def donor(request, id, event=None):
 def donationindex(request,event=None):
   event = viewutil.get_event(event)
 
-  if not event.id
+  if not event.id:
     allEvents = Event.objects.all()
     eventCount = len(allEvents)
     if eventCount == 1:
