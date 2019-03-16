@@ -37,6 +37,11 @@ def index(request,event=None):
 
   if event.id:
     eventParams['event'] = event.id
+  else:
+    allEvents = Event.objects.all()
+    if allEvents.length == 1:
+      event = allEvents[0]
+      eventParams['event'] = event.id
 
   agg = filters.run_model_query('donation', eventParams).aggregate(amount=Sum('amount'), count=Count('amount'), max=Max('amount'), avg=Avg('amount'))
   agg['target'] = event.targetamount
