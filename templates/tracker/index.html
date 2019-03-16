@@ -4,7 +4,7 @@
 {% load staticfiles %}
 
 {% block title %}
-    {{ event.name|title }} | {% trans "Honeypot" %}
+    {% trans "Honeypot" %} | {{ event.name|title }}
 {% endblock %}
 
 {% block head %}
@@ -14,7 +14,7 @@
 
 {% block content %}
     <h2 class="text-center">
-        <img style="height: 100px; width: auto;" src="{% static "images/banner.png" %}">
+        <img style="height: 100px; width: auto; margin-bottom: 15px;" src="{% static "images/banner.png" %}">
         <br />
         <small class="totals">
             {% trans "Donation Total" %}:
