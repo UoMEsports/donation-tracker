@@ -40,12 +40,22 @@ th, td {
     color: #FFD421;
 }
 
-.btn-success {
+.btn-success, .btn-primary {
     color: black;
     background-color: #FFF100;
     border-color: #FFD421;
 }
 
+.btn-success:hover, .btn-primary:hover {
+    color: black;
+    background-color: #FFD421;
+    border-color: #FFD421;
+}
+
 .fa-inverse {
     color: #3A3A3C;
+}
+
+.totals {
+    color: white;
 }

@@ -16,7 +16,7 @@
     <h2 class="text-center">
         {% trans "Donation Index" %} &mdash; {{ event.name|title }}
         <br />
-        <small>
+        <small class="totals">
             {% trans "Total" %} ({% trans "Count" %}):
             {{ agg.amount|money }} ({{ agg.count }}) &mdash;
             {% trans "Max/Avg Donation" %}:

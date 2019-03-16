@@ -16,7 +16,7 @@
     <h2 class="text-center">
         <img style="height: 100px; width: auto;" src="{% static "images/banner.png" %}">
         <br />
-        <small>
+        <small class="totals">
             {% trans "Donation Total" %}:
             {{ agg.amount|money }} ({{ agg.count }}) &mdash;
             {% trans "Max/Avg Donation" %}:
