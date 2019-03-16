@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Source Sans Pro', Verdana;
+    font-family: serenity, sans-serif;
     font-weight: 400;
     font-size: 13px;
     background-color: #f2f2f2;
@@ -41,7 +41,7 @@ a:hover {
 input, textarea, select {
 	border: 1px solid #bbb;
 	padding: 2px;
-	font-family: 'Source Sans Pro', Verdana;
+	font-family: serenity, sans-serif;
 	font-size: 12px;
 	margin: 5px 0px;
 }

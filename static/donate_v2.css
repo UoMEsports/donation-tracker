@@ -2,7 +2,7 @@
 
 body {
     color: white;
-    font-family: Arial, sans-serif;
+    font-family: serenity, sans-serif;
     font-size: 14pt;
     background-color: #272b30;
 }
@@ -17,7 +17,7 @@ label {
 }
 
 .form-control {
-    font-family: sans-serif;
+    font-family: serenity, sans-serif;
 }
 
 a, a:hover, a:visited, a:link, a:active {

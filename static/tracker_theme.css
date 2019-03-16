@@ -1,6 +1,7 @@
 body {
     background-color: #3A3A3C;
     color: white;
+    font-family: serenity, sans-serif;
 }
 
 .navbar-nav li a {
