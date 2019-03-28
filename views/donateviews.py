@@ -3,9 +3,6 @@ import datetime
 import json
 import random
 import traceback
-import urllib.error
-import urllib.parse
-import urllib.request
 from decimal import Decimal
 
 import post_office.mail
@@ -20,6 +17,7 @@ from django.views.decorators.cache import never_cache, cache_page
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView, FormView
 
+import tracker.eventutil as eventutil
 import tracker.filters as filters
 import tracker.forms as forms
 import tracker.models as models
@@ -341,7 +339,11 @@ def ipn(request):
           'prizes': viewutil.get_donation_prize_info(donation),
         }
         post_office.mail.send(recipients=[donation.donor.email], sender=donation.event.donationemailsender, template=donation.event.donationemailtemplate, context=formatContext)
+        
+      eventutil.post_donation_to_postbacks(donation)
 
+      # Replaced with above
+      '''
       agg = filters.run_model_query('donation', {'event': donation.event.id }).aggregate(amount=Sum('amount'))
 
       # TODO: this should eventually share code with the 'search' method, to
@@ -359,7 +361,7 @@ def ipn(request):
       for postback in postbacks:
         opener = urllib.request.build_opener()
         req = urllib.request.Request(postback.url, postbackJSon, headers={'Content-Type': 'application/json; charset=utf-8'})
-        response = opener.open(req, timeout=5)
+        response = opener.open(req, timeout=5)'''
     elif donation.transactionstate == 'CANCELLED':
       # eventually we may want to send out e-mail for some of the possible cases
       # such as payment reversal due to double-transactions (this has happened before)
