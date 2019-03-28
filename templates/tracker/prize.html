@@ -21,10 +21,7 @@
             {{ category }}
         {% endif %}
         {% if prize.image %}
-            <b>
-                {% trans "Image" %}:
-            </b>
-            <img src="{{ prize.image }}" style="max-width: 200px;"/>
+            <img src="{{ prize.image }}" style="max-width: 200px; display: block; margin-top: 15px;"/>
         {% endif %}
     </div>
     {% if prize.get_winners %}
