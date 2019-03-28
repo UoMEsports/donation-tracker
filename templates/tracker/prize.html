@@ -24,7 +24,7 @@
             <b>
                 {% trans "Image" %}:
             </b>
-            <a href="{{ prize.image }}" target="_blank">{% trans "Link" %}</a>
+            <img src="{{ prize.image }}" style="max-width: 200px;"/>
         {% endif %}
     </div>
     {% if prize.get_winners %}
