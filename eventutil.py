@@ -2,8 +2,10 @@ import json
 import traceback
 import urllib.request, urllib.error, urllib.parse
 
+from django.conf import settings
 from django.core import serializers
 from django.db.models import Sum
+
 
 import tracker.filters as filters
 import tracker.models as models
@@ -18,6 +20,7 @@ def post_donation_to_postbacks(donation):
     total = event_donations.aggregate(amount=Sum('amount'))['amount']
 
     data = {
+		'key': settings.SECRET_KEY,
         'id': donation.id,
         'timereceived': str(donation.timereceived),
         'comment': donation.comment,

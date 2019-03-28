@@ -341,27 +341,7 @@ def ipn(request):
         post_office.mail.send(recipients=[donation.donor.email], sender=donation.event.donationemailsender, template=donation.event.donationemailtemplate, context=formatContext)
         
       eventutil.post_donation_to_postbacks(donation)
-
-      # Replaced with above
-      '''
-      agg = filters.run_model_query('donation', {'event': donation.event.id }).aggregate(amount=Sum('amount'))
-
-      # TODO: this should eventually share code with the 'search' method, to
-      postbackData = {
-        'id': donation.id,
-        'timereceived': str(donation.timereceived),
-        'comment': donation.comment,
-        'amount': donation.amount,
-        'donor__visibility': donation.donor.visibility,
-        'donor__visiblename': donation.donor.visible_name(),
-        'new_total': agg['amount']
-      }
-      postbackJSon = json.dumps(postbackData, ensure_ascii=False, cls=serializers.json.DjangoJSONEncoder).encode('utf-8')
-      postbacks = models.PostbackURL.objects.filter(event=donation.event)
-      for postback in postbacks:
-        opener = urllib.request.build_opener()
-        req = urllib.request.Request(postback.url, postbackJSon, headers={'Content-Type': 'application/json; charset=utf-8'})
-        response = opener.open(req, timeout=5)'''
+  
     elif donation.transactionstate == 'CANCELLED':
       # eventually we may want to send out e-mail for some of the possible cases
       # such as payment reversal due to double-transactions (this has happened before)
