@@ -76,9 +76,9 @@
                 </td>
                 <td>
                     {% if prize.image %}
-                        <img href="{{ prize.image }}" style="width: 200px; margin: 7px;"/>
+                        <img src="{{ prize.image }}" style="width: 200px; margin: 7px;"/>
                     {% elif prize.imagefile %}
-                        <img href="{{ prize.imagefile.url }}" style="width: 200px; margin: 7px;"/>
+                        <img src="{{ prize.imagefile.url }}" style="width: 200px; margin: 7px;"/>
                     {% else %}
                         {% trans "None" %}
                     {% endif %}
