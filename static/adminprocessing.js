@@ -99,7 +99,7 @@ function asMoney(val) {
   {
     console.log("A new number conversion type: " + typeof val);
   }
-  return "$" + val.toFixed(2);
+  return "£" + val.toFixed(2);
 }
 
 function makeAnchor(text, url) {
