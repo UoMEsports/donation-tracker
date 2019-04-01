@@ -22,7 +22,7 @@ def draw_prize(prize, seed=None):
             return False, {'error': 'Seed parameter was unhashable'}
         psum = reduce(lambda a, b: a + b['weight'], eligible, 0.0)
         result = rand.random() * psum
-        ret = {'sum': psum, 'result': result}
+        ret = {'sum': psum, 'result': result, 'num_eligible': len(eligible)}
         for d in eligible:
             if result < d['weight']:
                 try:

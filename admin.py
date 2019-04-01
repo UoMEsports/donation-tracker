@@ -1211,7 +1211,7 @@ def draw_prize_winners(request):
         while status and not prize.maxed_winners():
           status, data = prizeutil.draw_prize(prize, seed=form.cleaned_data['seed'])
           prize.error = data['error'] if not status else ''
-        logutil.change(request, prize, 'Prize Drawing')
+        logutil.change(request, prize, 'Prize Drawing (' + data['num_eligible'] + ')')
       return render(request, 'admin/draw_prize_winners_post.html', { 'prizes': form.cleaned_data['prizes'] })
   else:
     form = forms.DrawPrizeWinnersForm(prizes=prizes)
