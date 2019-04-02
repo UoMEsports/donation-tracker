@@ -605,7 +605,7 @@ class AutomailPrizeWinnersForm(forms.Form):
     def __init__(self, prizewinners, *args, **kwargs):
         super(AutomailPrizeWinnersForm, self).__init__(*args, **kwargs)
         event = prizewinners[0].prize.event if len(prizewinners) > 0 else None
-        self.fields['fromaddress'] = forms.EmailField(max_length=256, initial=prizemail.get_event_default_sender_email(
+        self.fields['fromaddress'] = forms.CharField(max_length=256, initial=prizemail.get_event_default_sender_email(
             event), required=True, label='From Address', help_text='Specify the e-mail you would like to identify as the sender')
         self.fields['replyaddress'] = forms.EmailField(
             max_length=256, required=False, label='Reply Address', help_text="If left blank this will be the same as the from address")
