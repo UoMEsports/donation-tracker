@@ -667,9 +667,9 @@ class AutomailPrizeShippingNotifyForm(forms.Form):
     def __init__(self, prizewinners, *args, **kwargs):
         super(AutomailPrizeShippingNotifyForm, self).__init__(*args, **kwargs)
         event = prizewinners[0].prize.event if len(prizewinners) > 0 else None
-        self.fields['fromaddress'] = forms.EmailField(max_length=256, initial=prizemail.get_event_default_sender_email(
+        self.fields['fromaddress'] = forms.CharField(max_length=256, initial=prizemail.get_event_default_sender_email(
             event), required=True, label='From Address', help_text='Specify the e-mail you would like to identify as the sender')
-        self.fields['replyaddress'] = forms.CharField(
+        self.fields['replyaddress'] = forms.EmailField(
             max_length=256, required=False, label='Reply Address', help_text="If left blank this will be the same as the from address")
         self.fields['emailtemplate'] = forms.ModelChoiceField(queryset=post_office.models.EmailTemplate.objects.all(
         ), initial=None, empty_label="Pick a template...", required=True, label='Email Template', help_text="Select an email template to use.")
