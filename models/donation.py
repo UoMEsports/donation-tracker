@@ -160,10 +160,10 @@ class Donor(models.Model):
   user = OneToOneOrNoneField(User, null=True, blank=True, on_delete=models.PROTECT)
 
   # Address information, yay!
-  addresscity = models.CharField(max_length=128,blank=True,null=False,verbose_name='City')
-  addressstreet = models.CharField(max_length=128,blank=True,null=False,verbose_name='Street/P.O. Box')
-  addressstate = models.CharField(max_length=128,blank=True,null=False,verbose_name='State/Province')
-  addresszip = models.CharField(max_length=128,blank=True,null=False,verbose_name='Zip/Postal Code')
+  addresscity = models.CharField(max_length=128,blank=True,null=False,verbose_name='City/Town')
+  addressstreet = models.CharField(max_length=128,blank=True,null=False,verbose_name='Street & Number/Name')
+  addressstate = models.CharField(max_length=128,blank=True,null=False,verbose_name='County')
+  addresszip = models.CharField(max_length=128,blank=True,null=False,verbose_name='Post Code')
   addresscountry = models.ForeignKey('Country',null=True,blank=True,default=None,verbose_name='Country',
                                      on_delete=models.PROTECT)
 
