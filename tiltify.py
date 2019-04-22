@@ -2,7 +2,6 @@
 
 import datetime
 import logging
-import re
 
 import requests
 from django.conf import settings
@@ -21,7 +20,6 @@ def _get_tiltify_data(url):
     headers = {
         'Authorization': 'Bearer {}'.format(settings.TILTIFY_ACCESS_TOKEN),
     }
-    logger.info("Sending Tiltify request to URL: {}".format(url))
     r = requests.get(url, headers=headers)
 
     if r.status_code != 200:
@@ -37,7 +35,6 @@ def _get_tiltify_data(url):
         raise requests.exceptions.HTTPError(meta_status)
 
     # Return "data" object from V3 response.
-    logger.info("Got data {!r}".format(data['data']))
     return data['data']
 
 
