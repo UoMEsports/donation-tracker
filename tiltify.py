@@ -9,9 +9,10 @@ from django.core.exceptions import ValidationError
 
 from tracker.models import Donor, Donation
 
-USER_URL = 'https://tiltify.com/api/v3/user'
-CAMPAIGN_URL = 'https://tiltify.com/api/v3/users/{}/campaigns/{}'
-DONATIONS_URL = 'https://tiltify.com/api/v3/campaigns/{}/donations'
+TILTIFY_HOST = 'https://tiltify.com'
+USER_URL = TILTIFY_HOST + '/api/v3/user'
+CAMPAIGN_URL = TILTIFY_HOST + '/api/v3/users/{}/campaigns/{}'
+DONATIONS_URL = TILTIFY_HOST + '/api/v3/campaigns/{}/donations?count=100'
 
 logger = logging.getLogger(__name__)
 
@@ -35,7 +36,7 @@ def _get_tiltify_data(url):
         raise requests.exceptions.HTTPError(meta_status)
 
     # Return "data" object from V3 response.
-    return data['data']
+    return data['data'], data.get('links', {})
 
 
 def get_user_data():
@@ -45,7 +46,7 @@ def get_user_data():
         dict: User data object.
 
     """
-    return _get_tiltify_data(USER_URL)
+    return _get_tiltify_data(USER_URL)[0]
 
 
 def get_campaign_data(api_key, user=None):
@@ -60,7 +61,7 @@ def get_campaign_data(api_key, user=None):
     """
     if not user:
         user = get_user_data()
-    return _get_tiltify_data(CAMPAIGN_URL.format(user['slug'], api_key))
+    return _get_tiltify_data(CAMPAIGN_URL.format(user['slug'], api_key))[0]
 
 
 def get_donation_data(campaign):
@@ -71,7 +72,18 @@ def get_donation_data(campaign):
     :return: List of donations.
     :rtype: list[dict]
     """
-    return _get_tiltify_data(DONATIONS_URL.format(campaign['id']))
+    donations = []
+    url = DONATIONS_URL.format(campaign['id'])
+
+    # Loop through paging until we have no prev since donations come in descending timestamp order.
+    while url:
+        data, links = _get_tiltify_data(url)
+        donations += data
+        url = links.get('prev')
+        if url:
+            url = TILTIFY_HOST + url
+
+    return donations
 
 
 def sync_event_donations(event):
