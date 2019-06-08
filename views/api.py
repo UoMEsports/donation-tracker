@@ -278,9 +278,15 @@ def flatten(l):
     for el in l:
         if isinstance(el, collections.Iterable) and not isinstance(el, str):
             for sub in flatten(el):
-                yield sub
+                try:
+                    yield sub
+                except StopIteration:
+                    return
         else:
-            yield el
+            try:
+                yield el
+            except StopIteration:
+                return
 
 
 def filter_fields(fields, model_admin, request, obj=None):

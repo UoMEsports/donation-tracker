@@ -58,8 +58,11 @@ def get_bid_children(bid, bids):
 def get_bid_ancestors(bid, bids):
   while bid.parent_id:
     if bid.parent_id:
-      bid = next(filter(lambda parent: parent.id == bid.parent_id, bids))
-      yield bid
+      try:
+        bid = next(filter(lambda parent: parent.id == bid.parent_id, bids))
+        yield bid
+      except StopIteration:
+        return
 
 def bid_info(bid, bids, speedrun=None, event=None):
   return {
