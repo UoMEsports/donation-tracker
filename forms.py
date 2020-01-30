@@ -903,8 +903,8 @@ class AddressForm(forms.ModelForm):
 
     class Meta:
         model = models.Donor
-        fields = ['addressstreet', 'addresscity',
-                  'addressstate', 'addresscountry', 'addresszip', ]
+        fields = ['email', 'addressstreet', 'addresscity',
+                  'addressstate', 'addresscountry', 'addresszip']
 
 
 class NullForm(forms.Form):
@@ -919,8 +919,10 @@ class PrizeAcceptanceWithAddressForm(betterforms.multiform.MultiModelForm):
 
     def __init__(self, *args, **kwargs):
         super(PrizeAcceptanceWithAddressForm, self).__init__(*args, **kwargs)
+        # If prize does not require shipping, remove address fields from the address form (leave contact email).
         if not self.forms['prizeaccept'].instance.prize.requiresshipping:
-            del self.forms['address']
+            for field in ('addressstreet', 'addresscity', 'addressstate', 'addresscountry', 'addresszip'):
+                del self.forms['address'].fields[field]
         else:
             # Make address fields not required to start.
             for k in self.forms['address'].fields:

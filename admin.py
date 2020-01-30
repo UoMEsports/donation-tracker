@@ -543,8 +543,8 @@ class PrizeWinnerAdmin(CustomModelAdmin):
     """
     :type obj: tracker.models.PrizeWinner
     """
-    # Only show link if the prize is pending acceptance.
-    if obj.pendingcount > 0:
+    # Only show link if the prize winner is existing and pending acceptance.
+    if obj.pk and obj.pendingcount > 0:
       return format_html("""<a href="{}">Link</a>""".format(obj.make_winner_url()))
     else:
       return format_html("")
