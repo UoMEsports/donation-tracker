@@ -1,0 +1,34 @@
+.countdown {
+	display: flex;
+	margin: auto;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.block {
+	margin: 20px;
+	position: relative;
+	color: black;
+}
+.block .hexagon {
+	height: auto;
+	width: 120px;
+}
+.block .text-wrapper {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 100%;
+}
+.block .text-wrapper * {
+	width: 100%;
+	margin: 0;
+	text-align: center;
+}
+.block .text-wrapper .text {
+	font-size: 18px;
+}
+.block .text-wrapper .digit {
+	font-size: 60px;
+	line-height: 60px;
+}
