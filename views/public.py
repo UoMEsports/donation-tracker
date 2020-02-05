@@ -38,8 +38,9 @@ def index(request,event=None):
   allEvents = Event.objects.all()
   eventCount = len(allEvents)
 
-  if not event.id and eventCount == 1:
-    event = allEvents[0]
+  if not event.id:
+    if eventCount >= 1:
+      event = allEvents.reverse()[0]
 
   if event.id:
     eventParams['event'] = event.id
