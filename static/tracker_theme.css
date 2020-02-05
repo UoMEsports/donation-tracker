@@ -4,10 +4,17 @@
     font-weight: normal;
 }
 
+.hiveaid-font {
+    font-family: azonix, sans-serif;
+}
+
 body {
-    background-color: #3A3A3C;
     color: white;
     font-family: serenity, sans-serif;
+
+    background-image: url('images/background-tile.png');
+    background-repeat: repeat;
+    background-size: 60px;
 }
 
 a:hover, a:active, a:focus {
@@ -23,28 +30,27 @@ a:hover, a:active, a:focus {
 }
 
 .navbar-custom {
-    font-family: azonix, sans-serif;
     display: flex;
     flex-wrap: wrap;
     height: 70px;
     align-items: center;
     margin-bottom: 0;
 
-    max-width: 800px;
+    justify-content: center;
+
+    width: 600px;
+    max-width: 100%;
     margin: auto;
 }
 
 .nav-item {
     font-size: 24px;
     color: #FFD421 !important;
+    margin: 0 10px;
 }
 
 .nav-item:hover {
     color: white !important;
-}
-
-.spacer {
-    flex: 1 0 15px;
 }
 
 .table-striped > tbody > tr:nth-of-type(odd) {
@@ -99,10 +105,14 @@ th, td {
 
 .totals {
     color: white;
+    font-size: 42px;
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
 
 .container-custom {
-    max-width: 1200px;
+    width: 1600px;
+    max-width: 100%;
     margin: auto;
 }
 
@@ -113,9 +123,137 @@ th, td {
 }
 
 .banner {
-    width: 90%;
-    max-width: 750px;
+    width: 1000px;
+    max-width: 90%;    
     margin: 35px auto -30px auto;
     text-align: center;
     display: block;
+}
+
+.highlight > h1 {
+    color: white;
+    font-size: 40px;
+    margin-top: -25px;
+    margin-bottom: 30px;
+}
+
+.highlight > h1 > sup {
+    font-size: 60%;
+}
+
+.donate-button-wrapper {
+    max-width: 300px;
+    margin: auto;
+    padding-bottom: 15px;
+}
+.donate-button-wrapper.footer {
+    padding-bottom: 50px;
+}
+.donate-button-wrapper .donate-button {
+    color: black;
+    position: relative;
+    max-width: 100%;
+}
+.donate-button-wrapper .donate-button .donate-button-img {
+    height: 100%;
+    width: 100%;
+}
+.donate-button-wrapper .donate-button .donate-button-link {
+    color: black;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    text-decoration: none;
+}
+.donate-button-wrapper .donate-button .donate-button-link h3 {
+    color: black;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.charity-container {
+    text-align: center;
+}
+
+.charity-container h3 {
+    color: white;
+}
+
+.charity-container .charity-logo {
+    max-width: 100%;
+    margin-bottom: 15px;
+    margin-top: -15px;
+}
+
+.charity-container .charity-logo::after {
+    display: none !important;
+}
+
+.twitch-wrapper {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.twitch-wrapper #twitch-embed {
+    position: relative;
+    max-width: 100%;
+    padding-bottom: 56.25%;
+}
+
+.twitch-wrapper #twitch-embed iframe {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.info-wrapper {
+    display: flex;
+    max-width: 100%;
+    margin: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.info-wrapper .info-block {
+    color: white;
+    margin: 18px 0px;
+    width: 400px;
+}
+.info-wrapper .info-block .info-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4em;
+    text-align: center;
+    
+}
+.info-wrapper .info-block .info-header h1 {
+    font-size: 34px;
+    margin-bottom: 35px;
+}
+.info-wrapper .info-block p {
+    font-size: 20px;
+    font-family: serenity, sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    margin: 18px;
+}
+
+/*fancy scrollbar*/
+
+html {
+    overflow-y: scroll;
+}
+html::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #171717;
+}
+html::-webkit-scrollbar {
+    width: 20px;
+    background-color: #171717;
+}
+html::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.15, #FFD421), color-stop(0.85, #FFF100));
 }

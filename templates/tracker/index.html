@@ -4,39 +4,163 @@
 {% load staticfiles %}
 
 {% block title %}
-    {% trans "Honeypot" %} | {{ event.name|title }}
+    {{ event.name|title }}
 {% endblock %}
 
 {% block head %}
     <link rel="stylesheet" type="text/css" href="{% static "main.css" %}" />
     <link rel="stylesheet" type="text/css" href="{% static "tracker_theme.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "countdown.css" %}" />
+
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
 {% endblock %}
 
 {% block content %}
-    <h2 class="text-center">
-        <a href="https://hiveaid.uomesports.co.uk"><img class="banner" src="{% static "images/banner.png" %}"></a>
-        <br />
-        <small class="totals">
-            {% trans "Donation Total" %}:
-            {{ agg.amount|money }} ({{ agg.count }}) &mdash;
-            {% trans "Max/Avg Donation" %}:
-            {{ agg.max|money }}/{{ agg.avg|money }}
-        </small>
-    </h2>
-    <div class="button-container">
-        <p class="center-block"><br /></p>
-        <p class="center-block"><a class="btn btn-default btn-block" href="{% url 'tracker:prizeindex' event=event.short %}">{% trans "View Prizes" %} ({{ count.prizes }})</a></p>
-        <p class="center-block"><a class="btn btn-default btn-block" href="{% url 'tracker:bidindex' event=event.short %}">{% trans "View Bids" %} ({{ count.bids }})</a></p>
-        <p class="center-block"><a class="btn btn-default btn-block" href="{% url 'tracker:donorindex' event=event.short %}">{% trans "View Donors" %} ({{ count.donors }})</a></p>
-        <p class="center-block"><a class="btn btn-default btn-block" href="{% url 'tracker:donationindex' event=event.short %}">{% trans "View Donations" %} ({{ agg.count }})</a></p>
-        {% if event_count > 2 %}
-            <p class="center-block"><a class="btn btn-info btn-block" href="{% url 'tracker:eventlist' %}">{% trans "Select another Event" %}</a></p>
-        {% endif %}
-        <br />
-        {% if event.id != None and not event.locked %}
-            <p class="center-block"><a class="btn btn-lg btn-hiveaid btn-block" href="{% url 'tracker:donate' event.short %}">Donate</a></p>
-        {% endif %}
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    Vue.filter('two_digits', function (value) {
+        if (value.toString().length <= 1) {
+            return '0' + value.toString()
+        }
+
+        return value.toString()
+        });
+    </script>
+    <img class="banner" src="{% static "images/banner.png" %}">
+    <br />
+    <div id="countdown">
+        <div class="countdown hiveaid-font">
+            <div class="block">
+                <img class="hexagon" src="{% static "images/hexagon.png" %}"/>
+                <div class="text-wrapper">
+                    <p class="digit">[[ days | two_digits ]]</p>
+                    <p class="text">Days</p>
+                </div>
+            </div>
+            <div class="block">
+                <img class="hexagon" src="{% static "images/hexagon.png" %}"/>
+                <div class="text-wrapper">
+                    <p class="digit">[[ hours | two_digits ]]</p>
+                    <p class="text">Hours</p>
+                </div>
+            </div>
+            <div class="block">
+                <img class="hexagon" src="{% static "images/hexagon.png" %}"/>
+                <div class="text-wrapper">
+                    <p class="digit">[[ minutes | two_digits ]]</p>
+                    <p class="text">Minutes</p>
+                </div>
+            </div>
+            <div class="block">
+                <img class="hexagon" src="{% static "images/hexagon.png" %}"/>
+                <div class="text-wrapper">
+                    <p class="digit">[[ seconds | two_digits ]]</p>
+                    <p class="text">Seconds</p>
+                </div>
+            </div>
+        </div>
     </div>
+    <h2 class="text-center">
+        <div class="highlight hiveaid-font">
+            <h1>15<sup>th</sup> - 16<sup>th</sup> February 2020</h1>
+        </div>
+    </h2>
+
+    {% if event.id != None and not event.locked %}
+        <div class="donate-button-wrapper donate hiveaid-font">
+            <div class="donate-button">
+            <a href="{% url 'tracker:donate' event.short %}">
+                <img class="donate-button-img" src="{% static "images/donate-button.png" %}">
+            </a>
+            <a class="donate-button-link" href="{% url 'tracker:donate' event.short %}">
+                <h3>DONATE NOW</h3>
+            </a>
+            </div>
+        </div>
+    {% endif %}
+
+    <h2 class="totals hiveaid-font text-center">
+        {% trans "Donation Total" %}:
+        {{ agg.amount|money }} ({{ agg.count }})
+    </h2>
+
+    <div class="charity-container hiveaid-font">
+        <h3>Raising for</h3>
+        <a class="charity-logo" href="https://specialeffect.org.uk" target="_blank"><img src="{% static "images/special-effect.png" %}"/></a>
+    </div>
+
+    <div class="twitch-wrapper">
+        <div id="twitch-embed"></div>
+    </div>
+
+    <div class="info-wrapper">
+        <div class="info-block">
+            <div class="info-header hiveaid-font">
+                <h1>What is <br/>HiveAid 2020?</h1>
+            </div>
+            <p>HiveAid is a charity livestream hosted by the University of Manchester Esports Society, raising money for SpecialEffect.</p>
+            <p>Streamed in two segments across one weekend with a variety of different games on show, there'll be something for everyone.</p>
+            <p>The main attraction will be several "all-star" events, where we take the best players from the uni esports scene, mix them up, and make them battle it out to find the best of the best.</p>
+            <!--<p>PLUS, with the added excitement of the unique donation goals and incentives, you can be involved with shaping the outcome of the matches, and competitions going on throughtout the event.</p>-->
+        </div>
+        <div class="info-block">
+            <div class="info-header hiveaid-font">
+                <h1>What does SpecialEffect do?</h1>
+            </div>
+            <p>SpecialEffect enable severely disabled people to use technology in any way possible – using whichever part(s) of their body that work best - by adapting technology to their individual needs.</p>
+            <p>It’s so important they can join in with family/friends, to be included and not left out. This can hugely benefit rehabilitation, mental wellbeing, self-esteem and quality of life – and much needed FUN!</p>
+            <h4 class="hiveaid-font text-center"><a href="https://specialeffect.org.uk" target="_blank">Find out more about SpecialEffect</a></h4>
+        </div>
+    </div>
+
+    <script>
+        new Twitch.Embed("twitch-embed", {
+            width: '100%',
+            height: '100%',
+            layout: "video",
+            channel: "uomesports",
+            frameBorder: 0
+        });
+
+        let countdown = new Vue({
+        delimiters: ['[[', ']]'],
+        el: '#countdown',
+        data () {
+            return {
+                eventDate: "February 15, 2020 12:00",
+                now: Math.trunc((new Date()).getTime() / 1000)
+            }
+        },
+
+        mounted () {
+            this.$options.countdownInterval = setInterval(() => {
+                this.now = Math.trunc((new Date()).getTime() / 1000)
+            }, 999)
+        },
+
+        computed: {
+            seconds () {
+                return (this.timestamp - this.now) % 60
+            },
+
+            minutes () {
+                return Math.trunc((this.timestamp - this.now) / 60) % 60
+            },
+
+            hours () {
+                return Math.trunc((this.timestamp - this.now) / 60 / 60) % 24
+            },
+
+            days () {
+                return Math.trunc((this.timestamp - this.now) / 60 / 60 / 24)
+            },
+
+            timestamp () {
+                return Math.trunc(Date.parse(this.eventDate) / 1000)
+            }
+        }
+    });
+    </script>
 {% endblock %}
 
 {% block login %}
