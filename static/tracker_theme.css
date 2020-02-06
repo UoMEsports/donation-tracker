@@ -181,8 +181,8 @@ th, td {
     color: white;
 }
 
-.charity-container .charity-logo {
-    max-width: 100%;
+.charity-container .charity-logo img {
+    max-width: 95%;
     margin-bottom: 15px;
     margin-top: -15px;
 }
