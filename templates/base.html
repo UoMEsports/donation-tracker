@@ -72,8 +72,8 @@
     <div class="navbar-container hiveaid-font">
         <div class="navbar-custom">
             <a class="nav-item" href="{% url 'tracker:index' event=event.short %}">{% trans "Home" %}</a>
-            <!--<a class="nav-item" href="{% url 'tracker:prizeindex' event=event.short %}">{% trans "Prizes" %}</a>
-            <a class="nav-item" href="{% url 'tracker:bidindex' event=event.short %}">{% trans "Bids" %}</a>-->
+            <a class="nav-item" href="{% url 'tracker:prizeindex' event=event.short %}">{% trans "Prizes" %}</a>
+            <!--<a class="nav-item" href="{% url 'tracker:bidindex' event=event.short %}">{% trans "Bids" %}</a>-->
             <a class="nav-item" href="{% url 'tracker:donorindex' event=event.short %}">{% trans "Donors" %}</a>
             <a class="nav-item" href="{% url 'tracker:donationindex' event=event.short %}">{% trans "Donations" %}</a>
         </div>
